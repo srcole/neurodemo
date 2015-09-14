@@ -6,6 +6,7 @@
 %% 0. Load data
 subj = {'s01','s02','s03'};
 n_subj = length(subj);
+n_trials = 288; % # of trials per subject
 root = strcat(pwd,'\');
 
 attnside = nan(n_subj,n_trials); % Visual hemifield attended. 1=right; 2=left
@@ -29,7 +30,6 @@ for ss = 1:n_subj
 end
 
 n_oris = max(orL(1,:)); % # of unique grating orientations
-n_trials = size(betaL{1},1); % # of trials per subject
 
 %% 1. Compute VTFs (visual tuning functions) for each voxel
 vtfsL = cell(n_subj,1);
