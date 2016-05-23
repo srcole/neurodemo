@@ -43,6 +43,20 @@ all_stim_labels = vis(1).trialorder(:);
 all_speed = cell2mat({vis(1).runspeed{:}}');
 clear tempvisdat
 
+
+% Convert all traces to zscore
+dothis = 0;
+if dothis
+    cellmean = zeros(ncells,1);
+    cellstd = zeros(ncells,1);
+    for cc = 1:ncells
+        cellmean(cc) = mean(reshape(all_traces(cc,:,:),ntrials*size(all_traces,2),1));
+        cellstd(cc) = std(reshape(all_traces(cc,:,:),ntrials*size(all_traces,2),1));
+    end
+    
+    all_traces(cc,:,:) = (all_traces(cc,:,:) - cellmean(cc)) / cellstd(cc);
+end
+    
 % first pass - raw amplitude during stim period = "response"
 all_stim_response = squeeze(mean(all_traces(:,1:stim_nsamples,:),2));
 all_stim_speed = squeeze(mean(all_speed(:,1:stim_nsamples),2));
