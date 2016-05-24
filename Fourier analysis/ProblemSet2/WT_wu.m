@@ -6,6 +6,8 @@ function coef = WT_wu(sig, samp_rate, f, t, is_plot)
 %Inupts
 %   sig             1-d signal
 %   samp_rate       sampling rate
+%   f               2-element array [lo hi] frequency limits in Hz
+%   t               time array of the data (used for plotting)
 %   is_plot         1,plot;0,not plot
 %Outputs
 %   coefficients    time_frequency distribution.
